@@ -1,3 +1,9 @@
 h1{
     text-align: center;
 }
+
+.akanlistgen {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
