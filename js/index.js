@@ -3,17 +3,7 @@ var femaleNames = ['Akosua', 'Adwoa', 'Abenaa', 'Akua', 'Yaa', 'Afua', 'Ama'];
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
 	function getDayofWeek(){
-		var dob = parseInt(document.getElementById('dateOfBirth').value);
 		
-		var day = parseInt(dob.getDate());
-		var month = parseInt(dob.getMonth());
-		var year = parseInt(dob.getYear());
-		var cent = parseInt(year.substr(0,2));
-		var ury = parseInt(year.substr(-3, 2));
-
-
-		d = (((cent/4)-2)*(cent-1) + (5*ury/4) + (26*(month+1)/10) + day)%7;
-		return d;
 	};
 	
 	function findGender(){
@@ -28,7 +18,12 @@ var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'S
 	}
 
 	function findAkanName(){
-		var dayOfWeek = getDayofWeek();
+		var dob = document.getElementById('dateOfBirth').value;
+		var anyt = new Date(dob);
+		var d = anyt.getDay();
+		var dayOfWeek = days[d];
+		console.log(d);
+
 		var gender = findGender();
 		var name = "";
 
@@ -39,5 +34,5 @@ var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'S
 				name = femaleNames[d];
 			}
 			//concat the day born and the Akan name
-			document.getElementById("akanName").innerHTML = ("You were born on " + dayOfWeek + " and your Akan Name is" + name);
+			document.getElementById("akanName").innerHTML = ("You were born on " + dayOfWeek + " and your Akan Name is " + name);
 	}
